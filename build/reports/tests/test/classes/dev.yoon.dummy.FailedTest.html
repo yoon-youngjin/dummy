@@ -3,14 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - Test Summary</title>
-<link href="css/base-style.css" rel="stylesheet" type="text/css"/>
-<link href="css/style.css" rel="stylesheet" type="text/css"/>
-<script src="js/report.js" type="text/javascript"></script>
+<title>Test results - FailedTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>Test Summary</h1>
+<h1>FailedTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/dev.yoon.dummy.html">dev.yoon.dummy</a> &gt; FailedTest</div>
 <div id="summary">
 <table>
 <tr>
@@ -61,73 +64,44 @@
 <a href="#">Failed tests</a>
 </li>
 <li>
-<a href="#">Packages</a>
-</li>
-<li>
-<a href="#">Classes</a>
+<a href="#">Tests</a>
 </li>
 </ul>
 <div class="tab">
 <h2>Failed tests</h2>
-<ul class="linkList">
-<li>
-<a href="classes/dev.yoon.dummy.FailedTest.html">FailedTest</a>.
-<a href="classes/dev.yoon.dummy.FailedTest.html#alwaysFails()">alwaysFails()</a>
-</li>
-</ul>
+<div class="test">
+<a name="alwaysFails()"></a>
+<h3 class="failures">alwaysFails()</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: 이 테스트는 무조건 실패합니다.
+	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at app//org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at app//kotlin.test.junit5.JUnit5Asserter.fail(JUnitSupport.kt:56)
+	at app//kotlin.test.AssertionsKt__AssertionsKt.fail(Assertions.kt:520)
+	at app//kotlin.test.AssertionsKt.fail(Unknown Source)
+	at app//dev.yoon.dummy.FailedTest.alwaysFails(FailedTest.kt:9)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</pre>
+</span>
+</div>
 </div>
 <div class="tab">
-<h2>Packages</h2>
+<h2>Tests</h2>
 <table>
 <thead>
 <tr>
-<th>Package</th>
-<th>Tests</th>
-<th>Failures</th>
-<th>Ignored</th>
+<th>Test</th>
 <th>Duration</th>
-<th>Success rate</th>
+<th>Result</th>
 </tr>
 </thead>
-<tbody>
 <tr>
-<td class="failures">
-<a href="packages/dev.yoon.dummy.html">dev.yoon.dummy</a>
-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0.014s</td>
-<td class="failures">0%</td>
+<td class="failures">alwaysFails()</td>
+<td class="failures">0.014s</td>
+<td class="failures">failed</td>
 </tr>
-</tbody>
-</table>
-</div>
-<div class="tab">
-<h2>Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Tests</th>
-<th>Failures</th>
-<th>Ignored</th>
-<th>Duration</th>
-<th>Success rate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="failures">
-<a href="classes/dev.yoon.dummy.FailedTest.html">dev.yoon.dummy.FailedTest</a>
-</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0.014s</td>
-<td class="failures">0%</td>
-</tr>
-</tbody>
 </table>
 </div>
 </div>
