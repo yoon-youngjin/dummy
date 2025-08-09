@@ -8,6 +8,10 @@ class FailedTest {
     @Test
     @Disabled
     fun alwaysFails() {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         fail("이 테스트는 무조건 실패합니다!!")
     }
 }

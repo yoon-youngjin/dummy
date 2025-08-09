@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dev.yoon.dummy.FailedTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-08-03T12:41:02.932Z" hostname="yoonui-MacBookPro.local" time="0.014">
+<testsuite name="dev.yoon.dummy.FailedTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2025-08-09T10:25:01.521Z" hostname="yoonui-MacBookPro.local" time="0.001">
   <properties/>
-  <testcase name="alwaysFails()" classname="dev.yoon.dummy.FailedTest" time="0.014">
-    <failure message="org.opentest4j.AssertionFailedError: 이 테스트는 무조건 실패합니다." type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 이 테스트는 무조건 실패합니다.
-	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
-	at app//org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
-	at app//kotlin.test.junit5.JUnit5Asserter.fail(JUnitSupport.kt:56)
-	at app//kotlin.test.AssertionsKt__AssertionsKt.fail(Assertions.kt:520)
-	at app//kotlin.test.AssertionsKt.fail(Unknown Source)
-	at app//dev.yoon.dummy.FailedTest.alwaysFails(FailedTest.kt:9)
-	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
-</failure>
+  <testcase name="alwaysFails()" classname="dev.yoon.dummy.FailedTest" time="0.001">
+    <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
