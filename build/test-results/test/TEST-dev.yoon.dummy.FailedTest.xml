@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dev.yoon.dummy.FailedTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2025-08-09T11:30:33.891Z" hostname="yoonui-MacBookPro.local" time="0.0">
-  <properties/>
-  <testcase name="alwaysFails()" classname="dev.yoon.dummy.FailedTest" time="0.0">
-    <skipped/>
-  </testcase>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
