@@ -1,6 +1,6 @@
 on:
   workflow_dispatch:
-    inputs:
+    inputs: # 이걸 어떻게 입력받지않고 가져올 수 있을까?
       service_name:
         description: '서비스명'
         required: true
@@ -55,9 +55,9 @@ jobs:
       - name: Build docker image
         run: |
           docker build \
-            -f standard-images/docker/Dockerfile \
-            -t ${{ github.event.inputs.service_name }}:latest \
-            .
+          -f standard-images/docker/Dockerfile \
+          -t ${{ github.event.inputs.service_name }}:latest \
+          .
 
       - name: Check images
         run: docker images
