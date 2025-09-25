@@ -1,17 +1,20 @@
-FROM openjdk:21-jdk-slim AS builder
-WORKDIR /dummy
+FROM openjdk:17-jdk-slim AS builder
+WORKDIR /app
 
-COPY build/libs/*.jar app.jar
+COPY /api/build/libs/*.jar app.jar
 RUN mkdir -p build/extract
 
-WORKDIR /dummy/build/extract
-RUN java -Djarmode=layertools -jar /dummy/app.jar extract
+WORKDIR /app/build/extract
 
-FROM openjdk:21-jdk-slim
-COPY --from=builder /dummy/build/extract/dependencies/ /dummy
-COPY --from=builder /dummy/build/extract/spring-boot-loader/ /dummy
-COPY --from=builder /dummy/build/extract/snapshot-dependencies/ /dummy
-COPY --from=builder /dummy/build/extract/application/ /dummy
+RUN java -Djarmode=layertools -jar /app/app.jar extract
 
-WORKDIR /dummy
+FROM openjdk:17-jdk-slim
+
+COPY --from=builder /app/build/extract/dependencies/ /app
+COPY --from=builder /app/build/extract/spring-boot-loader/ /app
+COPY --from=builder /app/build/extract/snapshot-dependencies/ /app
+COPY --from=builder /app/build/extract/application/ /app
+
+WORKDIR /app
+
 ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
