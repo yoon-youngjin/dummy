@@ -1,5 +1,11 @@
 on:
   workflow_dispatch:
+    inputs:
+      service_name:
+        description: '서비스명'
+        required: true
+        type: string
+        default: 'dummy'
 
 jobs:
   build:
@@ -50,7 +56,8 @@ jobs:
         run: |
           docker build \
             -f standard-images/docker/Dockerfile \
+            -t ${{ github.event.inputs.service_name }}:latest
             .
 
       - name: Check image
-        run: docker images 
+        run: docker images
