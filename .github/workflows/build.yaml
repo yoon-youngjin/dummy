@@ -56,8 +56,8 @@ jobs:
         run: |
           docker build \
             -f standard-images/docker/Dockerfile \
-            -t ${{ github.event.inputs.service_name }}:latest
+            -t ${{ github.event.inputs.service_name }}:latest \
             .
 
-      - name: Check image
+      - name: Check images
         run: docker images
