@@ -1,9 +1,6 @@
 on:
   workflow_dispatch:
 
-env:
-  ECR_REPOSITORY: ${{ github.event.repository_name }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -60,7 +57,7 @@ jobs:
       - name: Docker 이미지 빌드, 태그 및 ECR 푸시
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: $ECR_REPOSITORY
+          ECR_REPOSITORY: ${{ github.event.inputs.service_name }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -f standard-images/docker/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
