@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
     inputs: # 이걸 어떻게 입력받지않고 가져올 수 있을까?
-      service_name:
-        description: '서비스명'
+      ecr_repository:
+        description: 'ECR 레포지토리명'
         required: true
         type: string
         default: 'dummy'
@@ -49,15 +49,24 @@ jobs:
           repository: yoon-youngjin/standard-images
           path: standard-images
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: AWS 자격 증명 구성
+        uses: aws-actions/configure-aws-credential@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
 
-      - name: Build docker image
+      - name: ECR 로그인
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Docker 이미지 빌드, 태그 및 ECR 푸시
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build \
-          -f standard-images/docker/Dockerfile \
-          -t ${{ github.event.inputs.service_name }}:latest \
-          .
+          docker build -f standard-images/docker/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-      - name: Check images
-        run: docker images
+#      - name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v3
