@@ -1,11 +1,8 @@
 on:
   workflow_dispatch:
-    inputs: # 이걸 어떻게 입력받지않고 가져올 수 있을까?
-      ecr_repository:
-        description: 'ECR 레포지토리명'
-        required: true
-        type: string
-        default: 'dummy'
+
+env:
+  ECR_REPOSITORY: ${{ github.event.repository_name }}
 
 jobs:
   build:
