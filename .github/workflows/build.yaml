@@ -85,3 +85,40 @@ jobs:
           
           docker build -f standard-images/docker/Dockerfile $BUILD_ARGS -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      #      - name: Slack 채널 정보 조회
+      #        id: get-slack-channel
+      #        run: |
+      #          RESPONSE=$(curl -s -X GET \
+      #            -H "Authorization: Bearer ${{ secrets.CMDB_API_TOKEN }}" \
+      #            -H "Content-Type: application/json" \
+      #            "${{ secrets.CMDB_API_URL }}/api/slack-channels?environment=${{ inputs.profile }}&service=${{ github.event.repository.name }}")
+      #
+      #          # JSON 응답에서 채널 ID 추출
+      #          CHANNEL_ID=$(echo "$RESPONSE" | jq -r '.data.slack_channel_id')
+
+      - name: Slack 성공 알림
+        if: success()
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          #          channel-id: ${{ steps.get-slack-channel.outputs.CHANNEL_ID }}
+          channel-id: C09HBDKRX3M
+          payload: |
+            {
+              "text": "성공"
+            }
+      - name: Slack 실패 알림
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          #          channel-id: ${{ steps.get-slack-channel.outputs.CHANNEL_ID }}
+          channel-id: C09HBDKRX3M
+          payload: |
+            {
+              "text": "실패"
+            }
+            
