@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 30
 
       - name: scripts 실행 권한 부여
         run: chmod +x ./.github/workflows/scripts/*.sh
@@ -19,6 +21,11 @@ jobs:
         run: |
           BRANCH="${{ github.head_ref }}"
           ./.github/workflows/scripts/validate-branch-convention.sh "$BRANCH"
-      
-    
-    
+
+      - name: Validate commit message convention
+        run: |
+          BASE="origin/${{ github.base_ref }}"
+          HEAD="HEAD"  # checkout 시 기본이 PR 헤드 커밋
+          ./.github/workflows/scripts/validate-commits.sh "$BASE" "$HEAD"
+
+
