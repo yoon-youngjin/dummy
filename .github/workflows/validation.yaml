@@ -26,6 +26,6 @@ jobs:
         run: |
           BASE="origin/${{ github.base_ref }}"
           HEAD="HEAD"  # checkout 시 기본이 PR 헤드 커밋
-          ./.github/workflows/scripts/validate-commits.sh "$BASE" "$HEAD"
+          ./.github/workflows/scripts/validate-commits-convention.sh "$BASE" "$HEAD"
 
 
