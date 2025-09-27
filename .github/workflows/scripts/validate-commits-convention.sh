@@ -13,7 +13,7 @@ mapfile -t COMMITS < <(git log --no-merges --pretty=%s "${BASE_REF}..${HEAD_REF}
 BAD_COUNT=0
 for row in "${COMMITS[@]}"; do
   if [[ ! "$row" =~ $CONVENTION_REGEX ]]; then
-    echo "❌ Invalid commit: ${SHA:0:7} | $row"
+    echo "❌ Invalid commit: $row"
     ((BAD_COUNT++))
   fi
 done
