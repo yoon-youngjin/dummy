@@ -4,6 +4,8 @@ set -euo pipefail
 BASE_REF="${1}"
 HEAD_REF="${2}"
 
+git fetch --no-tags --prune --depth=0 origin || true
+
 CONVENTION_REGEX='^(feature|fix|refactor|test|revert)(\([a-z0-9._-]+\))?!?: .+'
 
 mapfile -t COMMITS < <(git log --no-merges --pretty=%s "${BASE_REF}..${HEAD_REF}")
