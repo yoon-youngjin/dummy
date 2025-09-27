@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 30
+          fetch-depth: 0 # 모든 커밋을 다 가져오기 때문에 네트워크적인 이슈 고려 (PR에 쌓인 커밋만 가져오고 싶음)
 
       - name: scripts 실행 권한 부여
         run: chmod +x ./.github/workflows/scripts/*.sh
