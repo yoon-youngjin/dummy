@@ -18,7 +18,7 @@ jobs:
       - name: Validate branch naming convention
         run: |
           BRANCH="${{ github.head_ref }}"
-          ./scripts/validate-branch-convention.sh "$BRANCH"
+          ./.github/workflows/scripts/validate-branch-convention.sh "$BRANCH"
       
     
     
