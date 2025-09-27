@@ -1,0 +1,15 @@
+name: CI Pipeline
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  validation:
+    uses: ./.github/workflows/validation.yaml
+
+  test:
+    uses: ./.github/workflows/test.yaml
+
+  build:
+    needs: [ validation, test ]
+    uses: ./.github/workflows/build.yaml
