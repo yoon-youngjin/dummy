@@ -4,7 +4,7 @@ BRANCH="${1}"
 
 CONVENTION_REGEX='^(main|develop|feature\/[a-z0-9._-]+|fix\/[a-z0-9._-])'
 
-if [[ "$BRANCH" =~ CONVENTION_REGEX ]]; then
+if [[ "$BRANCH" =~ $CONVENTION_REGEX ]]; then
   echo "✅ Branch OK: $BRANCH"
 else
   echo "❌ Invalid branch name: '$BRANCH'"
