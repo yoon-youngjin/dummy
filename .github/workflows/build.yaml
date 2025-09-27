@@ -58,7 +58,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ github.event.repository.name }}
-          IMAGE_TAG: ${{ github.sha.substr(0, 10) }}
+          IMAGE_TAG: ${{ github.sha.substring(0, 10) }}
         run: |
           docker build -f standard-images/docker/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
