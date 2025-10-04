@@ -13,4 +13,9 @@ jobs:
     with:
       profile: ${{ github.ref == 'refs/heads/develop' && 'dev' || 'live' }}
 
-  # CD 단계 추가
+  deploy:
+    needs: [ build ]
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      profile: ${{ github.ref == 'refs/heads/develop' && 'dev' || 'live' }}
+      image_uri: ${{ needs.build.outputs.image_uri }}
